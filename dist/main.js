@@ -118,6 +118,27 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/Likeclass.js":
+/*!**************************!*\
+  !*** ./src/Likeclass.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Likeclass)\n/* harmony export */ });\nclass Likeclass {\n  constructor(array) {\n    this.LikesArray = array;\n  }\n}\n\n\n//# sourceURL=webpack://webpack-demo/./src/Likeclass.js?");
+
+/***/ }),
+
+/***/ "./src/LikesApi.js":
+/*!*************************!*\
+  !*** ./src/LikesApi.js ***!
+  \*************************/
+/***/ ((module) => {
+
+eval("class LikesApi {\n  constructor() {\n    this.baseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/qvkLjRRWATbZfhQ7TGpS/likes';\n  }\n\n      getmethod = async () => {\n        const result = await fetch(\n          `${this.baseURL}`,\n          {\n            method: 'GET',\n            headers: {\n              'Content-Type': 'application/json',\n            },\n          },\n        )\n          .then((res) => res.json())\n          .catch((err) => err);\n        return result;\n      };\n}\n\nmodule.exports = LikesApi;\n\n\n//# sourceURL=webpack://webpack-demo/./src/LikesApi.js?");
+
+/***/ }),
+
 /***/ "./src/Todo.js":
 /*!*********************!*\
   !*** ./src/Todo.js ***!
@@ -135,7 +156,7 @@ eval("class MakeApicall {\n  constructor() {\n    this.baseURL = 'https://jsonpl
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main.js */ \"./src/main.js\");\n/* harmony import */ var _Todo_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Todo.js */ \"./src/Todo.js\");\n/* harmony import */ var _Todo_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Todo_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _img_heart_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./img/heart.svg */ \"./src/img/heart.svg\");\n\n\n\n\n\nconst scorelist = document.querySelector('.scorelist');\nconst api = new (_Todo_js__WEBPACK_IMPORTED_MODULE_2___default())();\n\nconst refresher = async () => {\n  scorelist.innerHTML = '';\n  const res = await api.getmethod();\n  const main = new _main_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"](res);\n\n  main.username.forEach((usernames) => {\n    if (usernames.id < 7) {\n      scorelist.innerHTML += `\n  \n  <div class=outline>\n  <div class=\"score\">\n  <p class=\"paragraph_url\"><span>${\n  usernames.id === 1\n    ? 'First'\n    : usernames.id === 2\n      ? 'Second'\n      : usernames.id === 3\n        ? 'Third'\n        : usernames.id === 4\n          ? 'Fourth'\n          : usernames.id === 5\n            ? 'Fifth'\n            : usernames.id === 6\n              ? 'Sixth'\n              : ''\n}\n  </span><span>Blog</span></p>\n  </div>\n   <div  class=\"title_url\"> \n    <p class=\"paragraph_url\"><span>${usernames.name}</span></p>\n    <p class=\"paragraph_url\"><span>Likes:</span></p>\n   </div>\n   <div class=\"like_comment\">\n   <button class=\"likes\">Like</button>\n     <button class=\"comment\">Comment</button>\n   </div>\n\n   <div class=\"like_comment\">\n   <button class=\"Reservations\">Reservations</button>\n   </div>\n  </div>\n\n  `;\n    }\n  });\n};\n\ndocument.addEventListener('DOMContentLoaded', refresher, false);\n\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main.js */ \"./src/main.js\");\n/* harmony import */ var _Todo_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Todo.js */ \"./src/Todo.js\");\n/* harmony import */ var _Todo_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Todo_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _LikesApi_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LikesApi.js */ \"./src/LikesApi.js\");\n/* harmony import */ var _LikesApi_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_LikesApi_js__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _Likeclass_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Likeclass.js */ \"./src/Likeclass.js\");\n\n// base class and api call\n\n\n// Likes api and class\n\n\n\nconst scorelist = document.querySelector('.scorelist');\n// MakeApicall to object\nconst api = new (_Todo_js__WEBPACK_IMPORTED_MODULE_2___default())();\n// Like class to object\nconst apilike = new (_LikesApi_js__WEBPACK_IMPORTED_MODULE_3___default())();\n\nconst refresher = async () => {\n  scorelist.innerHTML = '';\n  // main api call\n  const res = await api.getmethod();\n  const main = new _main_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"](res);\n  // api likes\n  const reslike = await apilike.getmethod();\n  const mainlike = new _Likeclass_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"](reslike);\n\n  main.username.forEach((usernames) => {\n    if (usernames.id < 7) {\n      for (let i = 0; i < mainlike.LikesArray.length; i += 1) {\n        if (mainlike.LikesArray[i].item_id === usernames.id) {\n          scorelist.innerHTML += `\n\n  <div class=outline>\n  <div class=\"score\">\n  <p class=\"paragraph_url\"><span>${\n  usernames.id === 1\n    ? 'First'\n    : usernames.id === 2\n      ? 'Second'\n      : usernames.id === 3\n        ? 'Third'\n        : usernames.id === 4\n          ? 'Fourth'\n          : usernames.id === 5\n            ? 'Fifth'\n            : usernames.id === 6\n              ? 'Sixth'\n              : ''\n}\n\n  </span><span>Blog</span></p>\n  </div>\n   <div  class=\"title_url\"> \n    <p class=\"paragraph_url\"><span>${usernames.name}</span></p>\n    <p class=\"paragraph_url\"><span>Likes: ${mainlike.LikesArray[i].likes}</span></p>\n   </div>\n   <div class=\"like_comment\">\n   <button class=\"likes\">Like</button>\n     <button class=\"comment\">Comment</button>\n   </div>\n\n   <div class=\"like_comment\">\n   <button class=\"Reservations\">Reservations</button>\n   </div>\n  </div>\n\n  `;\n        }\n      }\n    }\n  });\n};\n\ndocument.addEventListener('DOMContentLoaded', refresher, false);\n\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
 
 /***/ }),
 
@@ -147,17 +168,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Main)\n/* harmony export */ });\nclass Main {\n  constructor(array) {\n    this.username = array;\n  }\n}\n\n\n//# sourceURL=webpack://webpack-demo/./src/main.js?");
-
-/***/ }),
-
-/***/ "./src/img/heart.svg":
-/*!***************************!*\
-  !*** ./src/img/heart.svg ***!
-  \***************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-eval("module.exports = __webpack_require__.p + \"509057abdf7b1253ebd3.svg\";\n\n//# sourceURL=webpack://webpack-demo/./src/img/heart.svg?");
 
 /***/ })
 
