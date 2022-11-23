@@ -1,4 +1,4 @@
-import './style.css';
+import './asset/css/style.css';
 // base class and api call
 import Main from './main.js';
 import MakeApicall from './Todo.js';
@@ -75,7 +75,7 @@ const refresher = async () => {
       apilike.postmethod(i + 1);
       setTimeout(() => {
         refresher();
-      }, 300);
+      }, 400);
     });
   }
 };
