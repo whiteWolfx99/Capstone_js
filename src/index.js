@@ -3,9 +3,10 @@ import './style.css';
 import Main from './main.js';
 import MakeApicall from './Todo.js';
 // Likes api and class
-import LikesApi from './LikesApi.js';
-import Likeclass from './Likeclass.js';
+import LikesApi from './Likes/LikesApi.js';
+import Likeclass from './Likes/Likeclass.js';
 
+// container
 const scorelist = document.querySelector('.scorelist');
 // MakeApicall to object
 const api = new MakeApicall();
@@ -21,9 +22,9 @@ const refresher = async () => {
   const reslike = await apilike.getmethod();
   const mainlike = new Likeclass(reslike);
 
-  main.username.forEach((usernames) => {
-    if (usernames.id < 7) {
-      for (let i = 0; i < mainlike.LikesArray.length; i += 1) {
+  for (let i = 0; i < mainlike.LikesArray.length; i += 1) {
+    main.username.forEach((usernames) => {
+      if (usernames.id < 7) {
         if (mainlike.LikesArray[i].item_id === usernames.id) {
           scorelist.innerHTML += `
 
@@ -49,7 +50,9 @@ const refresher = async () => {
   </div>
    <div  class="title_url"> 
     <p class="paragraph_url"><span>${usernames.name}</span></p>
-    <p class="paragraph_url"><span>Likes: ${mainlike.LikesArray[i].likes}</span></p>
+    <p class="paragraph_url"><span>Likes: ${
+  mainlike.LikesArray[i].likes
+}</span></p>
    </div>
    <div class="like_comment">
    <button class="likes">Like</button>
@@ -64,8 +67,17 @@ const refresher = async () => {
   `;
         }
       }
-    }
-  });
+    });
+  }
+
+  for (let i = 0; i < document.querySelectorAll('.likes').length; i += 1) {
+    document.querySelectorAll('.likes')[i].addEventListener('click', () => {
+      apilike.postmethod(i + 1);
+      setTimeout(() => {
+        refresher();
+      }, 300);
+    });
+  }
 };
 
 document.addEventListener('DOMContentLoaded', refresher, false);
