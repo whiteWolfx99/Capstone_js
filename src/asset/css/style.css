@@ -21,7 +21,8 @@ body {
   flex-direction: column;
   border: 2px solid #000;
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 100px;
+  width: 38px;
   text-align: center;
 }
 

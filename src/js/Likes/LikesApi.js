@@ -1,5 +1,6 @@
 class LikesApi {
   constructor() {
+    this.array = [];
     this.baseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/cNZqM0oVNMyctsSAIcbv/likes';
   }
 
@@ -15,7 +16,8 @@ class LikesApi {
         )
           .then((res) => res.json())
           .catch((err) => err);
-        return result;
+        this.array = [...result];
+        return this.array;
       };
 
       postmethod = async (Id) => {
@@ -41,4 +43,4 @@ class LikesApi {
       };
 }
 
-module.exports = LikesApi;
+export default LikesApi;
