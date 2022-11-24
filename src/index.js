@@ -1,4 +1,6 @@
 import './asset/css/style.css';
+import MakePopups from './popup.js';
+import Comments from './modules/comments.js';
 // base class and api call
 import Main from './js/main.js';
 import MakeApicall from './js/Todo.js';
@@ -87,6 +89,8 @@ const refresher = async () => {
       }, 500);
     });
   }
+  Comments.comments();
+  MakePopups.reservationPopups();
 };
 
 document.addEventListener('DOMContentLoaded', refresher, false);
