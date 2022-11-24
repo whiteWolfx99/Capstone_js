@@ -1,8 +1,7 @@
-import './style.css';
-import Main from './main.js';
-import MakeApicall from './Todo.js';
-import './img/heart.svg';
-import MakePopups from './popup.js';
+import './asset/css/style.css';
+import Main from './js/main.js';
+import MakeApicall from './js/Todo.js';
+import MakeReservationPopups from './modules/popup.js';
 
 const scorelist = document.querySelector('.scorelist');
 const api = new MakeApicall();
@@ -49,7 +48,7 @@ const refresher = async () => {
       `;
     }
   });
-  MakePopups.reservationPopups();
+  MakeReservationPopups.reservationPopups();
 };
 
 document.addEventListener('DOMContentLoaded', refresher, false);
