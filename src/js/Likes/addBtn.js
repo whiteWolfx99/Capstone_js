@@ -1,6 +1,6 @@
-import LikesApi from "./LikesApi.js";
+import LikesApi from './LikesApi.js';
 
-export default async function  addBtn(Id) {
+export default async function addBtn(Id) {
   const apilike = new LikesApi();
-  await apilike.postmethod(Id+1);
+  await apilike.postmethod(Id + 1);
 }
