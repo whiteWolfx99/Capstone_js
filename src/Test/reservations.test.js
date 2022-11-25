@@ -31,7 +31,7 @@ describe('Testing Reservations Module', () => {
     });
   });
 
-  it('Get all Blog Topic Reservations', () => { 
+  it('Get all Blog Topic Reservations', () => {
     // Arrange
     const blogId = 2;
 
